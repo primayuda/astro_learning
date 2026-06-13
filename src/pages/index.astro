@@ -1,4 +1,8 @@
 ---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
 const pageTitle = "Home Page";
 ---
 
@@ -10,31 +14,15 @@ const pageTitle = "Home Page";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-		<style>
-			body {
-				font-family: Arial, sans-serif;
-				margin: 0;
-				padding: 0;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				height: 100vh;
-				background-color: #f0f0f0;
-			}
-			h1 {
-				color: #333;
-			}
-			p {
-				color: #666;
-			}
-		</style>
+		
 	</head>
 	<body>
-		<a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog/">Blog</a>
+		<Header />
 		<h1>{pageTitle}</h1>
 		<p>I hope I can learn more</p>
+		<Footer />
+		<script>
+			import '../scripts/menu.js';
+		</script>
 	</body>
 </html>
