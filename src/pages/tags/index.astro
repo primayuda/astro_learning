@@ -1,15 +1,15 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 const pageTitle = "Tag Index";
-
-const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-const uniqueTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
 ---
 <BaseLayout pageTitle={pageTitle}>
     
   <p>Click on a tag to see all posts with that tag.</p>
   <div class="tags">
-    {uniqueTags.map((tag) => (
+    {tags.map((tag) => (
       <p class="tag"><a href={`/tags/${tag}/`}>{tag}</a></p>
     ))}
   </div>
